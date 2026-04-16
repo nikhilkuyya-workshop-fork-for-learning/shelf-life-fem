@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host 127.0.0.1 --port 4173",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "node scripts/prepare-environment.mjs && playwright install && svelte-kit sync && npm run db:push",
@@ -14,7 +14,10 @@
 		"test": "playwright test",
 		"test:all": "npm run test:unit && npm run test",
 		"db:push": "drizzle-kit push --force",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"test:playground": "playwright test tests/playground.spec.ts",
+		"test:ui": "playwright test --ui",
+		"test:codegen": "playwright codegen http://127.0.0.1:4173"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.11.1",

@@ -29,6 +29,7 @@ tmp/
 
 playwright-report/
 playwright/.authentication/
+playwright/.auth/
 
 # Local agent/editor settings — keep shared project config + skills, ignore personal overrides
 .claude/settings.local.json

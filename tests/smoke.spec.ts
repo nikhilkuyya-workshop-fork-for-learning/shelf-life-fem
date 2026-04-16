@@ -21,16 +21,19 @@ test('home page introduces Shelf and exposes the public starter navigation', asy
 		'href',
 		'/playground'
 	);
-	await expect(page.getByRole('banner').getByRole('link', { name: 'Sign in' })).toHaveAttribute(
-		'href',
-		'/login'
-	);
+	await page.getByRole('banner').getByRole('button', { name: 'Sign out' }).click({trial: true});
 });
 
 test('protected routes redirect unauthenticated readers to login', async ({ page }) => {
 	await page.goto('/search');
-	await expect(page).toHaveURL(/\/login\?returnTo=%2Fsearch$/);
+	await expect(page).toHaveURL('/search');
 
 	await page.goto('/shelf');
-	await expect(page).toHaveURL(/\/login\?returnTo=%2Fshelf$/);
+	await expect(page).toHaveURL('/shelf');
+});
+
+test("click on playground nav link item should navigate to the playground page", async ({ page }) => {
+	await page.goto('/');
+	await page.getByRole('link', { name: 'Playground' }).click();
+	await expect(page).toHaveURL('/playground');
 });

@@ -9,5 +9,18 @@ export default defineConfig({
 	},
 	use: {
 		baseURL: 'http://127.0.0.1:4173'
-	}
+	},
+	projects: [
+		{
+			name: 'setup',
+			testMatch: 'tests/auth.setup.ts'
+		},
+		{
+			name: 'chromium',
+			dependencies: ['setup'],			
+			use: {
+				storageState: 'playwright/.auth/user.json'
+			},
+		}
+	]
 });
