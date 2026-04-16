@@ -97,7 +97,7 @@ test.describe("playground page", async () => {
             await page.goto('/playground');
             const rateThisBookButton = await page.getByRole('button', { name: 'Rate this book' });
             await rateThisBookButton.nth(1).click();
-            expect(page.getByRole("dialog")).toBeVisible();
+            await expect(page.getByRole("dialog")).toBeVisible();
         });
 
         test("action to save the rating", async ({ page }) => {
