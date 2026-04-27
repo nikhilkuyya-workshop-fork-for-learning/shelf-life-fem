@@ -2,13 +2,16 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
 	testDir: 'tests',
-	testIgnore: ['**/labs/fixtures/**', '**/labs/broken-traces/**'],
+	testIgnore: [
+		'**/labs/fixtures/**',
+		'**/labs/broken-traces/**'
+	],
 	webServer: {
 		command: 'npm run build && npm run preview -- --host 127.0.0.1 --port 4173',
 		url: 'http://127.0.0.1:4173'
 	},
 	use: {
-		baseURL: 'http://127.0.0.1:4173'
+		baseURL: 'http://127.0.0.1:4173'	
 	},
 	projects: [
 		{
@@ -17,7 +20,7 @@ export default defineConfig({
 		},
 		{
 			name: 'chromium',
-			dependencies: ['setup'],			
+			dependencies: ['setup'],					
 			use: {
 				storageState: 'playwright/.auth/user.json'
 			},
